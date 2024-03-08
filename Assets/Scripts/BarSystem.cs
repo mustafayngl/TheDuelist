@@ -27,17 +27,7 @@ public class BarSystem : MonoBehaviour
         }
     }
     
-    /*
-    // old 
-    void MoveLine()
-    {
-        // Çizgiyi sağa ve sola hareket ettiren kod
-        float moveSpeed = 3f; // Çizgi hareket hızı
-        float moveDirection = Mathf.Sin(Time.time); // Sine dalga formuyla hareket
-        float newX = Mathf.Lerp(-4f, 4f, (moveDirection + 1f) / 2f); // -4 ile 4 arasında değer üret
-        line.position = new Vector3(newX, line.position.y, line.position.z);
-    }
-    */
+    
     
     void MoveLine()
     {
@@ -80,6 +70,6 @@ public class BarSystem : MonoBehaviour
         // Oyun kazanıldığında tetiklenen kod
         Debug.Log("Kazandınız!");
         gameWon = true;
-        // İstediğiniz diğer işlemleri yapabilirsiniz, örneğin kazanma ekranı göstermek veya oyunu yeniden başlatmak
+        
     }
 }
