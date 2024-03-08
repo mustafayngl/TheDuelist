@@ -8,7 +8,27 @@ public class BarSystem : MonoBehaviour
 
     private bool inRedArea; // Çizgi kırmızı alanda mı?
     private bool gameWon; // Oyun kazanıldı mı?
+    
+    
+    // Draw Speeds
+    public int playerDrawSpeed = 100;
+    public int enemyDrawSpeed = 40;
 
+
+
+    public void ChangeRedAreaSize(int enemyDrawSpeed, int playerDrawSpeed)
+    {
+        // Kırmızı alanın boyutunu değiştiren kod
+        //redArea.transform.localScale = new Vector3(enemyDrawSpeed / playerDrawSpeed, 1, 1);
+        redArea.transform.localScale = new Vector3(bar.localScale.x/Mathf.Abs(enemyDrawSpeed - playerDrawSpeed), 1, 1);
+        
+        redArea.transform.localScale = new Vector3(bar.localScale.x/(enemyDrawSpeed - playerDrawSpeed), 1, 1);
+
+        
+        
+    }
+    
+    
     void Start()
     {
         inRedArea = false;
@@ -24,6 +44,13 @@ public class BarSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && inRedArea && !gameWon)
         {
             WinGame();
+        }
+        
+        
+        // when X is pressed, change the size of the red area based on the enemy and player's draw speeds
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            ChangeRedAreaSize(enemyDrawSpeed,playerDrawSpeed);
         }
     }
     
