@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
 
     public int dieCount;
 
+    public int level = 1;
+
+    public Animator BlackoutAnim;
+
 
     private void Awake()
     {
@@ -83,7 +87,8 @@ public class GameManager : MonoBehaviour
                 countdownText.gameObject.SetActive(false);
 
                 DuelWonAnimationController.instance.PlayWinAnimation(); // Play the win animation
-
+                BlackoutAnim.SetTrigger("WinCondition");
+                level++;
                 
                 // Take some of the enemy's draw speed and give it to the player 
                 Enemy.instance.TakeDrawSpeed(); 
@@ -95,6 +100,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
     
     /*
     public IEnumerator CheckPressedSpace()

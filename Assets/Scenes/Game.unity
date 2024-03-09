@@ -2324,6 +2324,7 @@ GameObject:
   - component: {fileID: 578277706}
   - component: {fileID: 578277705}
   - component: {fileID: 578277704}
+  - component: {fileID: 578277707}
   m_Layer: 5
   m_Name: BlackScreen
   m_TagString: Untagged
@@ -2360,7 +2361,7 @@ Animator:
   m_GameObject: {fileID: 578277702}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 24091f9a6555099448abdafd84651bda, type: 2}
+  m_Controller: {fileID: 9100000, guid: b4f5f223b9320294788fe73839d68a56, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2409,6 +2410,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578277702}
   m_CullTransparentMesh: 1
+--- !u!114 &578277707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578277702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42b6c1d9e2709d46af4889ce60eb2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlackoutAnim: {fileID: 578277704}
 --- !u!1 &595120019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,10 +4303,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1128397315}
   - {fileID: 778983881}
   - {fileID: 1409657453}
   - {fileID: 578277703}
+  - {fileID: 1128397315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8085,6 +8099,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countdownText: {fileID: 1409657451}
   dieCount: 0
+  level: 1
+  BlackoutAnim: {fileID: 578277704}
 --- !u!4 &1337072254
 Transform:
   m_ObjectHideFlags: 0
@@ -12242,7 +12258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9937f5dd9ffd4438e58f5ebcd6b6fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerDrawSpeed: 61
+  playerDrawSpeed: 674
   playerDrawSpeedText: {fileID: 778983882}
 --- !u!95 &1926010648
 Animator:
