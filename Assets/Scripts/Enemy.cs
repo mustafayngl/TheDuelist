@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
     // singletons
     public static Enemy instance;
+    
 
     private void Awake()
     {
@@ -32,6 +34,10 @@ public class Enemy : MonoBehaviour
         //Player.instance.playerDrawSpeed += enemyDrawSpeed / 2; ////////
 
         Player.instance.playerDrawSpeed += (int)CalculateDrawSpeed();
+
+        GameManager.instance.dieCount++;
+
+        enemyDrawSpeed = Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
 
     }
 

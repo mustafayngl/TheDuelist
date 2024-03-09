@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     
     public TextMeshProUGUI countdownText;
 
+    public int dieCount;
+
 
     private void Awake()
     {
@@ -76,6 +78,9 @@ public class GameManager : MonoBehaviour
             {
                 // Win the duel
                 BarSystem.Instance.WinDuel();
+
+                BarSystem.Instance.DuelBar.SetActive(false);
+                countdownText.gameObject.SetActive(false);
                 
                 // Take some of the enemy's draw speed and give it to the player 
                 Enemy.instance.TakeDrawSpeed(); 
