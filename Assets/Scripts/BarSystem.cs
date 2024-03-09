@@ -13,22 +13,38 @@ public class BarSystem : MonoBehaviour
     // Draw Speeds
     public int playerDrawSpeed = 100;
     public int enemyDrawSpeed = 40;
+    
+    
+    // Scaling factor for the red area || it is working good with 5.0f
+    public float scaleFactor = 5.0f;
+    
 
-
-
+    // Change the size of the red area based on the enemy and player's draw speeds
     public void ChangeRedAreaSize(int enemyDrawSpeed, int playerDrawSpeed)
+{
+    // If enemyDrawSpeed is 0, to avoid division by zero, we set the scale to maximum
+    if (enemyDrawSpeed == 0)
     {
-        // Kırmızı alanın boyutunu değiştiren kod
-        //redArea.transform.localScale = new Vector3(enemyDrawSpeed / playerDrawSpeed, 1, 1);
-        redArea.transform.localScale = new Vector3(bar.localScale.x/Mathf.Abs(enemyDrawSpeed - playerDrawSpeed), 1, 1);
-        
-        redArea.transform.localScale = new Vector3(bar.localScale.x/(enemyDrawSpeed - playerDrawSpeed), 1, 1);
-
-        
-        
+        redArea.transform.localScale = new Vector3(bar.localScale.x, 1, 1);
     }
-    
-    
+    else
+    {
+        // Calculate the ratio of playerDrawSpeed to the sum of playerDrawSpeed and enemyDrawSpeed
+        float ratio = (float)playerDrawSpeed / (playerDrawSpeed + enemyDrawSpeed);
+
+        // Apply the scaling factor to the ratio
+        ratio = Mathf.Pow(ratio, scaleFactor);
+
+        // Calculate the new scale for the red area
+        float newScale = bar.localScale.x * ratio;
+
+        // Ensure the new scale does not exceed the bar's scale
+        newScale = Mathf.Min(newScale, bar.localScale.x);
+
+        // Set the scale of the red area based on the ratio
+        redArea.transform.localScale = new Vector3(newScale, 1, 1);
+    }
+}
     void Start()
     {
         inRedArea = false;
