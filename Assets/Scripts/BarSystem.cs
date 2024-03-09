@@ -18,8 +18,8 @@ public class BarSystem : MonoBehaviour
 
 
     // Draw Speeds
-    public int playerDrawSpeed = 100;
-    public int enemyDrawSpeed = 40;
+    //public int playerDrawSpeed = 100;
+    //public int enemyDrawSpeed = 40;
 
 
     // for bar's scaling system based on the draw speeds
@@ -64,7 +64,7 @@ public class BarSystem : MonoBehaviour
         // when X is pressed, change the size of the red area based on the enemy and player's draw speeds
         if (Input.GetKeyDown(KeyCode.X))
         {
-            ChangeRedAreaSize(enemyDrawSpeed, playerDrawSpeed);
+            ChangeRedAreaSize(Enemy.instance.enemyDrawSpeed, Player.instance.playerDrawSpeed);
             ChangeLineSpeed(Enemy.instance.enemyDrawSpeed, Player.instance.playerDrawSpeed);
         }
     }

@@ -64,13 +64,15 @@ public class GameManager : MonoBehaviour
         {
             if (BarSystem.Instance.inRedArea)
             {
+                // Win the duel
                 BarSystem.Instance.WinDuel();
                 
-                // TODO if player win the duel, take the enemy draw speed
-                Enemy.instance.TakeDrawSpeed(); /////////////
+                // Take some of the enemy's draw speed and give it to the player 
+                Enemy.instance.TakeDrawSpeed(); 
             }
             else
             {
+                // Lose the duel
                 BarSystem.Instance.LoseDuel();
             }
         }

@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2d55aaaf867d44aa7dff6001f8941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDrawSpeed: 60
+  enemyDrawSpeed: 70
 --- !u!212 &1499491990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1522,8 +1522,6 @@ MonoBehaviour:
   redArea: {fileID: 1763175252}
   inRedArea: 0
   isDuelWon: 0
-  playerDrawSpeed: 100
-  enemyDrawSpeed: 50
   scaleFactor: 5
   moveSpeed: 3
 --- !u!1 &1999927145
