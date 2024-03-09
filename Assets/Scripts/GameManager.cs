@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
         // Start the duel (implement duel logic here)
         // You might want to trigger animations, sound effects, etc.
+        
+        
     }
 
     // Add more methods for duel logic, such as resolving outcomes, determining winners, etc.
