@@ -78,9 +78,13 @@ public class GameManager : MonoBehaviour
             {
                 // Win the duel
                 BarSystem.Instance.WinDuel();
+<<<<<<< Updated upstream
 
                 BarSystem.Instance.DuelBar.SetActive(false);
                 countdownText.gameObject.SetActive(false);
+=======
+                DuelWonAnimationController.instance.PlayWinAnimation(); // Play the win animation
+>>>>>>> Stashed changes
                 
                 // Take some of the enemy's draw speed and give it to the player 
                 Enemy.instance.TakeDrawSpeed(); 

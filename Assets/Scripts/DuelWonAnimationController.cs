@@ -5,7 +5,14 @@ using UnityEngine;
 
 public class DuelWonAnimationController : MonoBehaviour
 {
-    public float hizi = 5f; // Karakterin yürüme hızı
+    
+    // Singleton
+    public static DuelWonAnimationController instance;
+    
+    
+    
+   
+   public float hizi = 5f; // Karakterin yürüme hızı
 
     public GameObject player;
     
@@ -13,23 +20,30 @@ public class DuelWonAnimationController : MonoBehaviour
 
     private void Awake()
     {
-        winAnimation.StopPlayback();
+        //winAnimation.StopPlayback();
+        
+        // singleton pattern
+        if (instance == null)
+        {
+            instance = this;
+        }
     }
 
     public void PlayWinAnimation()
     {
-        winAnimation.StartPlayback();
+        
         player.GetComponent<Animator>().SetTrigger("Win");
 
         // Sağa doğru yürümeyi başlatın
-        StartCoroutine(YuruSag());
+        //StartCoroutine(YuruSag());
     }
-
+    
+    /*
     IEnumerator YuruSag()
     {
         // Karakterin dönüşünü sağa çevirin
         transform.rotation = Quaternion.Euler(0, 0, 0);
-
+        
         // Bir while döngüsü kullanarak karakteri sağa doğru hareket ettirin
         while (true)
         {
@@ -37,4 +51,7 @@ public class DuelWonAnimationController : MonoBehaviour
             yield return null;
         }
     }
+    */
+    
+    
 }
