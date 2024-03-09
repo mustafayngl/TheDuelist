@@ -1,23 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //public BarSystem barSystem;
-
+    // Singleton
+    public static GameManager instance;
+    
     private bool isDuelStarted;
+    
+    public TextMeshProUGUI countdownText;
+
+
+    private void Awake()
+    {
+        // Singleton pattern
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
+        countdownText.gameObject.SetActive(false); // Hide the countdown text at the start
         isDuelStarted = false;
+        BarSystem.Instance.DuelBar.SetActive(false);
     }
 
     void Update()
     {
         
         /*
-        // Start the duel when the player presses the space key
+        // Start the duel when the player preses the space key
         if (Input.GetKeyDown(KeyCode.Space) && !isDuelStarted)
         {
             StartDuel();
@@ -27,34 +44,27 @@ public class GameManager : MonoBehaviour
         CheckDuelResult();
     }
 
+    public void CheckDuelStarted()
+    {
+        if (!isDuelStarted) return;
+        BarSystem.Instance.DuelBar.SetActive(true); // if duel is happening Start the duel bar
+        countdownText.gameObject.SetActive(true); // if duel is happening Start the countdown text
+        
+    }
+    
     public void StartDuel()
     {
         // Set duel started flag to true
         isDuelStarted = true;
         
-        // Determine duel outcome based on the player's input timing within the bar system
-
-        // BU SATIRI BEN YOORUM SATIRINA ALDIM COMPOILE EROR VERIYORDU DENYEMIYORDUM -SADIK   bool playerWins = barSystem.PlayerAttack();//bunlari ekleyince ismi degistirirsin
-
-        // If the player wins, acquire a portion of the enemy's draw speed for the next level
-
-        // BU SATIRI BEN YOORUM SATIRINA ALDIM COMPOILE EROR VERIYORDU DENYEMIYORDUM -SADIK  if(playerWins)
-        {
-            // Acquire a portion of the enemy's draw speed based on the result
-            // BU SATIRI BEN YOORUM SATIRINA ALDIM COMPOILE EROR VERIYORDU DENYEMIYORDUM -SADIK float acquiredDrawSpeed = barSystem.GetEnemyDrawSpeedAcquired();//bunlari ekleyince ismi degistirirsin
-            // Store acquired draw speed for next level or use it immediately as needed
-        }
-
-        // Start the duel (implement duel logic here)
-        // You might want to trigger animations, sound effects, etc.
-
-
+        CheckDuelStarted(); // if duel is happening show the duel bar
+        
         // Change the line speed and red area size based on the draw speeds of the player and the enemy
         BarSystem.Instance.ChangeLineSpeed(Enemy.instance.enemyDrawSpeed , Player.instance.playerDrawSpeed);
         BarSystem.Instance.ChangeRedAreaSize(Enemy.instance.enemyDrawSpeed , Player.instance.playerDrawSpeed);
-        
-        
-        
+
+        StartCoroutine(BarSystem.Instance.CheckPressedSpace()); // Start the coroutine to check if the player presses space within 5 seconds
+
     }
 
     // Check the result of the duel
@@ -78,6 +88,19 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    /*
+    public IEnumerator CheckPressedSpace()
+    {
+        // Wait for 5 seconds
+        yield return new WaitForSeconds(5f);
+
+        // If the player hasn't pressed space within 5 seconds, they lose the duel
+        if (!BarSystem.Instance.isDuelWon)
+        {
+            BarSystem.Instance.LoseDuel();
+        }
+    }
+    */
     // Add more methods for duel logic, such as resolving outcomes, determining winners, etc.
 }
 

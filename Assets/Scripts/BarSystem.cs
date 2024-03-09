@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Android;
+
 
 
 // this class is responsible for managing the bar system and attached to Line object
@@ -8,6 +10,9 @@ public class BarSystem : MonoBehaviour
 {
     // Singleton instance
     public static BarSystem Instance { get; private set; }
+
+
+    public GameObject DuelBar;
 
     public Transform line; // Çizgi objesinin referansı
     public Transform bar; // Bar objesinin referansı
@@ -17,9 +22,7 @@ public class BarSystem : MonoBehaviour
     public bool isDuelWon; // Oyun kazanıldı mı?
 
 
-    // Draw Speeds
-    //public int playerDrawSpeed = 100;
-    //public int enemyDrawSpeed = 40;
+    
 
 
     // for bar's scaling system based on the draw speeds
@@ -177,4 +180,25 @@ public class BarSystem : MonoBehaviour
 
         // TODO // it should be implemented in GameManager
     }
+    
+    public IEnumerator CheckPressedSpace()
+    {
+        float countdown = 5f;
+
+        while (countdown > 0)
+        {
+            GameManager.instance.countdownText.text = "Time left: " + countdown.ToString("F1");
+            countdown -= Time.deltaTime;
+            yield return null;
+        }
+
+        GameManager.instance.countdownText.text = "";
+
+        // If the player hasn't pressed space within 5 seconds, they lose the duel
+        if (!BarSystem.Instance.isDuelWon)
+        {
+            BarSystem.Instance.LoseDuel();
+        }
+    }
+    
 }

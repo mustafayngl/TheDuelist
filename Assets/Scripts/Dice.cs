@@ -1,9 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Dice : MonoBehaviour
-{
+{   
+    // Singleton
+    public static Dice instance;
+
+    private void Awake()
+    {
+        // Singleton pattern
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     public int RollDiceWithBetterOdds()
     {
         int randomNumber = Random.Range(1, 101);
