@@ -13,8 +13,8 @@ public class BarSystem : MonoBehaviour
     public Transform bar; // Bar objesinin referansı
     public GameObject redArea; // Kırmızı alan objesinin referansı
 
-    private bool inRedArea; // Çizgi kırmızı alanda mı?
-    private bool gameWon; // Oyun kazanıldı mı?
+    public bool inRedArea; // Çizgi kırmızı alanda mı?
+    public bool isDuelWon; // Oyun kazanıldı mı?
 
 
     // Draw Speeds
@@ -22,7 +22,7 @@ public class BarSystem : MonoBehaviour
     public int enemyDrawSpeed = 40;
 
 
-    
+    // for bar's scaling system based on the draw speeds
     public float scaleFactor = 5.0f;// Scaling factor for the red area || it is working good with 5.0f
     [SerializeField] private float moveSpeed = 3f; // Line's move speed
     
@@ -45,27 +45,27 @@ public class BarSystem : MonoBehaviour
     void Start()
     {
         inRedArea = false;
-        gameWon = false;
+        isDuelWon = false;
     }
-
+    
+    
+    
     void Update()
     {
         // Çizginin hareketini sağlayan kod
         MoveLine();
 
 
-        // Space tuşuna basıldığında ve çizgi kırmızı alanda ise kazanma kontrolü yapılır
-        if (Input.GetKeyDown(KeyCode.Space) && inRedArea && !gameWon)
-        {
-            WinGame();
-        }
+        
+        // Check if the duel is won or lost
+        //CheckDuelResult(); ///////////////////////
 
         // FOR TESTING PRESS X TO CHANGE THE SIZE OF THE RED AREA
         // when X is pressed, change the size of the red area based on the enemy and player's draw speeds
         if (Input.GetKeyDown(KeyCode.X))
         {
             ChangeRedAreaSize(enemyDrawSpeed, playerDrawSpeed);
-            ChangeLineSpeed();
+            ChangeLineSpeed(Enemy.instance.enemyDrawSpeed, Player.instance.playerDrawSpeed);
         }
     }
 
@@ -98,7 +98,7 @@ public class BarSystem : MonoBehaviour
     
     
     // Change the speed of the line based on the enemy and player's draw speeds
-    public void ChangeLineSpeed()
+    public void ChangeLineSpeed(int enemyDrawSpeed, int playerDrawSpeed)
     {
         // Maximum and minimum possible speeds
         float maxSpeed = 10f;
@@ -134,7 +134,7 @@ public class BarSystem : MonoBehaviour
     }
 
     // When the line enters the red area, the following code is triggered
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         // Çizgi kırmızı alana girdiğinde tetiklenen kod
         if (other.gameObject == redArea)
@@ -152,14 +152,27 @@ public class BarSystem : MonoBehaviour
         if (other.gameObject == redArea)
         {
             inRedArea = false;
+            
+            Debug.Log("Kırmızı alandan çıktınız!");
         }
     }
+    
+    
+    
+    public void LoseDuel()
+    {
+        
+        isDuelWon = false;
+        Debug.Log("You lose!");
+        
+        // TODO // it should be implemented in GameManager 
+    }
 
-    void WinGame()
+    public void WinDuel()
     {
         // Oyun kazanıldığında tetiklenen kod
         Debug.Log("Kazandınız!");
-        gameWon = true;
+        isDuelWon = true;
 
 
         // TODO // it should be implemented in GameManager

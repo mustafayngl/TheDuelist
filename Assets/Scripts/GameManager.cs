@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public BarSystem barSystem;
+    //public BarSystem barSystem;
 
     private bool isDuelStarted;
 
@@ -15,17 +15,23 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        
+        /*
+        // Start the duel when the player presses the space key
         if (Input.GetKeyDown(KeyCode.Space) && !isDuelStarted)
         {
             StartDuel();
         }
+        */
+        
+        CheckDuelResult();
     }
 
-    void StartDuel()
+    public void StartDuel()
     {
         // Set duel started flag to true
         isDuelStarted = true;
-
+        
         // Determine duel outcome based on the player's input timing within the bar system
 
         // BU SATIRI BEN YOORUM SATIRINA ALDIM COMPOILE EROR VERIYORDU DENYEMIYORDUM -SADIK   bool playerWins = barSystem.PlayerAttack();//bunlari ekleyince ismi degistirirsin
@@ -41,10 +47,35 @@ public class GameManager : MonoBehaviour
 
         // Start the duel (implement duel logic here)
         // You might want to trigger animations, sound effects, etc.
+
+
+        // Change the line speed and red area size based on the draw speeds of the player and the enemy
+        BarSystem.Instance.ChangeLineSpeed(Enemy.instance.enemyDrawSpeed , Player.instance.playerDrawSpeed);
+        BarSystem.Instance.ChangeRedAreaSize(Enemy.instance.enemyDrawSpeed , Player.instance.playerDrawSpeed);
+        
         
         
     }
 
+    // Check the result of the duel
+    public void CheckDuelResult()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !BarSystem.Instance.isDuelWon)
+        {
+            if (BarSystem.Instance.inRedArea)
+            {
+                BarSystem.Instance.WinDuel();
+                
+                // TODO if player win the duel, take the enemy draw speed
+                Enemy.instance.TakeDrawSpeed(); /////////////
+            }
+            else
+            {
+                BarSystem.Instance.LoseDuel();
+            }
+        }
+    }
+    
     // Add more methods for duel logic, such as resolving outcomes, determining winners, etc.
 }
 
