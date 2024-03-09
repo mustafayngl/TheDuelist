@@ -12278,6 +12278,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerDrawSpeed: 674
   playerDrawSpeedText: {fileID: 778983882}
+  PlayerMoveRight: {fileID: 1926010648}
+  playermove: {fileID: 0}
+  playermoveclip: {fileID: 0}
 --- !u!95 &1926010648
 Animator:
   serializedVersion: 5
