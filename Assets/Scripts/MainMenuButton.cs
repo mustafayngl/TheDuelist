@@ -20,10 +20,6 @@ public class MainMenuButton : MonoBehaviour
 
     [SerializeField] private GameObject optionsMenu;
 
-    void Start()
-    {
-        //soundOnOffTMP = soundOnOffText.GetComponent<TextMeshProUGUI>();
-    }
     
     public void Play()
     {
