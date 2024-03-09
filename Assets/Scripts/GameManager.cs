@@ -110,21 +110,23 @@ public class GameManager : MonoBehaviour
             if (BarSystem.Instance.inRedArea)
             {
                 // Win the duel
+                dieCount++;
+                    
                 BarSystem.Instance.WinDuel();
                 
                 /////////////
                 if (GameManager.instance.level == 1)
                 {
-                    GameManager.instance.Enemy2.GetComponent<Enemy>().enemyDrawSpeed =  Random.Range( 20,  80);
+                    GameManager.instance.Enemy2.GetComponent<Enemy>().enemyDrawSpeed =  Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
                 }
                 else if (GameManager.instance.level == 2)
                 {
                     //Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
-                    GameManager.instance.Enemy3.GetComponent<Enemy>().enemyDrawSpeed =  Random.Range(20, 80);
+                    GameManager.instance.Enemy3.GetComponent<Enemy>().enemyDrawSpeed =  Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
                 }
                 else if (GameManager.instance.level == 3)
                 {
-                    GameManager.instance.Enemy1.GetComponent<Enemy>().enemyDrawSpeed =  Random.Range(20,80);
+                    GameManager.instance.Enemy1.GetComponent<Enemy>().enemyDrawSpeed =  Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
                 }
 
                 BarSystem.Instance.DuelBar.SetActive(false);

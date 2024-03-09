@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
         
         Player.instance.playerDrawSpeed += (int)CalculateDrawSpeed();
 
-        GameManager.instance.dieCount++;
+        //GameManager.instance.dieCount++;
 
 
 
