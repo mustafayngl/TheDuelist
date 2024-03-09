@@ -19,26 +19,34 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public int enemyDrawSpeed = 80;
+    public int enemyDrawSpeed;
 
 
     // Take the enemy draw speed and give it to the player if the player wins the duel
     public void TakeDrawSpeed()
     {
-        Debug.Log("Enemy draw speed: " + enemyDrawSpeed);
+        //Debug.Log("Enemy draw speed: " + enemyDrawSpeed);
 
         // TODO: roll a dice and give the draw speed to the player based on the dice result
 
 
         // give draw speed to player
         //Player.instance.playerDrawSpeed += enemyDrawSpeed / 2; ////////
-
+        
+        
         Player.instance.playerDrawSpeed += (int)CalculateDrawSpeed();
 
         GameManager.instance.dieCount++;
 
-        enemyDrawSpeed = Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
 
+
+       
+        
+        
+        /*
+        // increase the enemy draw speed randomly
+        enemyDrawSpeed = Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
+        */
     }
 
     public float CalculateDrawSpeed()

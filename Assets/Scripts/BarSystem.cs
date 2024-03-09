@@ -62,7 +62,8 @@ public class BarSystem : MonoBehaviour
         
         // Check if the duel is won or lost
         //CheckDuelResult(); ///////////////////////
-
+        
+        /*
         // FOR TESTING PRESS X TO CHANGE THE SIZE OF THE RED AREA
         // when X is pressed, change the size of the red area based on the enemy and player's draw speeds
         if (Input.GetKeyDown(KeyCode.X))
@@ -70,6 +71,7 @@ public class BarSystem : MonoBehaviour
             ChangeRedAreaSize(Enemy.instance.enemyDrawSpeed, Player.instance.playerDrawSpeed);
             ChangeLineSpeed(Enemy.instance.enemyDrawSpeed, Player.instance.playerDrawSpeed);
         }
+        */
     }
 
     // Change the size of the red area based on the enemy and player's draw speeds
@@ -195,9 +197,9 @@ public class BarSystem : MonoBehaviour
         GameManager.instance.countdownText.text = "";
 
         // If the player hasn't pressed space within 5 seconds, they lose the duel
-        if (!BarSystem.Instance.isDuelWon)
+        if (!isDuelWon)
         {
-            BarSystem.Instance.LoseDuel();
+            LoseDuel();
         }
     }
     
