@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+// this class is responsible for managing the bar system and attached to Line object
 public class BarSystem : MonoBehaviour
 {
     public Transform line; // Çizgi objesinin referansı
@@ -8,43 +10,44 @@ public class BarSystem : MonoBehaviour
 
     private bool inRedArea; // Çizgi kırmızı alanda mı?
     private bool gameWon; // Oyun kazanıldı mı?
-    
-    
+
+
     // Draw Speeds
     public int playerDrawSpeed = 100;
     public int enemyDrawSpeed = 40;
-    
-    
+
+
     // Scaling factor for the red area || it is working good with 5.0f
     public float scaleFactor = 5.0f;
-    
+
 
     // Change the size of the red area based on the enemy and player's draw speeds
     public void ChangeRedAreaSize(int enemyDrawSpeed, int playerDrawSpeed)
-{
-    // If enemyDrawSpeed is 0, to avoid division by zero, we set the scale to maximum
-    if (enemyDrawSpeed == 0)
     {
-        redArea.transform.localScale = new Vector3(bar.localScale.x, 1, 1);
+        // If enemyDrawSpeed is 0, to avoid division by zero, we set the scale to maximum
+        if (enemyDrawSpeed == 0)
+        {
+            redArea.transform.localScale = new Vector3(bar.localScale.x, 1, 1);
+        }
+        else
+        {
+            // Calculate the ratio of playerDrawSpeed to the sum of playerDrawSpeed and enemyDrawSpeed
+            float ratio = (float)playerDrawSpeed / (playerDrawSpeed + enemyDrawSpeed);
+
+            // Apply the scaling factor to the ratio
+            ratio = Mathf.Pow(ratio, scaleFactor);
+
+            // Calculate the new scale for the red area
+            float newScale = bar.localScale.x * ratio;
+
+            // Ensure the new scale does not exceed the bar's scale
+            newScale = Mathf.Min(newScale, bar.localScale.x);
+
+            // Set the scale of the red area based on the ratio
+            redArea.transform.localScale = new Vector3(newScale, 1, 1);
+        }
     }
-    else
-    {
-        // Calculate the ratio of playerDrawSpeed to the sum of playerDrawSpeed and enemyDrawSpeed
-        float ratio = (float)playerDrawSpeed / (playerDrawSpeed + enemyDrawSpeed);
 
-        // Apply the scaling factor to the ratio
-        ratio = Mathf.Pow(ratio, scaleFactor);
-
-        // Calculate the new scale for the red area
-        float newScale = bar.localScale.x * ratio;
-
-        // Ensure the new scale does not exceed the bar's scale
-        newScale = Mathf.Min(newScale, bar.localScale.x);
-
-        // Set the scale of the red area based on the ratio
-        redArea.transform.localScale = new Vector3(newScale, 1, 1);
-    }
-}
     void Start()
     {
         inRedArea = false;
@@ -55,23 +58,23 @@ public class BarSystem : MonoBehaviour
     {
         // Çizginin hareketini sağlayan kod
         MoveLine();
-
+        
+        
         // Space tuşuna basıldığında ve çizgi kırmızı alanda ise kazanma kontrolü yapılır
         if (Input.GetKeyDown(KeyCode.Space) && inRedArea && !gameWon)
         {
             WinGame();
         }
-        
-        
+
+        // FOR TESTING PRESS X TO CHANGE THE SIZE OF THE RED AREA
         // when X is pressed, change the size of the red area based on the enemy and player's draw speeds
         if (Input.GetKeyDown(KeyCode.X))
         {
-            ChangeRedAreaSize(enemyDrawSpeed,playerDrawSpeed);
+            ChangeRedAreaSize(enemyDrawSpeed, playerDrawSpeed);
         }
     }
-    
-    
-    
+
+    // Line movement method
     void MoveLine()
     {
         // Çizgiyi sağa ve sola hareket ettiren kod
@@ -89,6 +92,8 @@ public class BarSystem : MonoBehaviour
         line.position = new Vector3(newX, line.position.y, line.position.z);
     }
     
+    
+    // When the line enters the red area, the following code is triggered
     void OnTriggerEnter2D(Collider2D other)
     {
         // Çizgi kırmızı alana girdiğinde tetiklenen kod
@@ -98,7 +103,9 @@ public class BarSystem : MonoBehaviour
             Debug.Log("Kırmızı alana girdiniz!");
         }
     }
-
+    
+    
+    // When the line exits the red area, the following code is triggered
     void OnTriggerExit2D(Collider2D other)
     {
         // Çizgi kırmızı alandan çıktığında tetiklenen kod
@@ -113,6 +120,5 @@ public class BarSystem : MonoBehaviour
         // Oyun kazanıldığında tetiklenen kod
         Debug.Log("Kazandınız!");
         gameWon = true;
-        
     }
 }
