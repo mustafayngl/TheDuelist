@@ -2066,6 +2066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540141799}
   - component: {fileID: 540141800}
+  - component: {fileID: 540141801}
   m_Layer: 0
   m_Name: EnemyLevel3
   m_TagString: Untagged
@@ -2140,6 +2141,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &540141801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540141798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef2d55aaaf867d44aa7dff6001f8941, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDrawSpeed: 80
 --- !u!1 &543903825
 GameObject:
   m_ObjectHideFlags: 0
@@ -4558,7 +4572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2d55aaaf867d44aa7dff6001f8941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDrawSpeed: 50
+  enemyDrawSpeed: 60
 --- !u!1 &1012088988
 GameObject:
   m_ObjectHideFlags: 0
@@ -7657,7 +7671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef2d55aaaf867d44aa7dff6001f8941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDrawSpeed: 35
+  enemyDrawSpeed: 38
 --- !u!1 &1304904270
 GameObject:
   m_ObjectHideFlags: 0
@@ -8101,6 +8115,10 @@ MonoBehaviour:
   dieCount: 0
   level: 1
   BlackoutAnim: {fileID: 578277704}
+  Enemy1: {fileID: 1294537170}
+  Enemy2: {fileID: 1007690021}
+  Enemy3: {fileID: 540141798}
+  enemyDrawSpeed: 50
 --- !u!4 &1337072254
 Transform:
   m_ObjectHideFlags: 0
