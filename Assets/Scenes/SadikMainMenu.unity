@@ -2869,7 +2869,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b4a57636a4cc64f6c822a6bd1aec36e9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.202
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3477,6 +3477,7 @@ MonoBehaviour:
   quitButton: {fileID: 1532533513}
   SoundOnOffButton: {fileID: 140615211}
   soundOnOffText: {fileID: 37051056}
+  mainMenu: {fileID: 0}
   soundOnOffTMP: {fileID: 37051058}
   optionsMenu: {fileID: 1630797752}
 --- !u!1 &903269126
