@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI playerDrawSpeedText;
     
     
+    // for teleport camera to the player
+    public Camera mainCamera;
+    
     
     
     public Animator PlayerMoveRight;
@@ -32,7 +35,9 @@ public class Player : MonoBehaviour
         playerDrawSpeedText.text = playerDrawSpeed.ToString();
     }
 
-
+    
+    
+    
     public void TeleportPlayer()
     {
         if (GameManager.instance.level == 1)
@@ -60,7 +65,29 @@ public class Player : MonoBehaviour
     
     public void StopAnimation()
     {
-        PlayerMoveRight.gameObject.GetComponent<Animator>().enabled = false;
+        
+        // after 2 second enable the animator
+        StartCoroutine(EnableAnimator());
             
     }
+    
+    
+    
+    
+    IEnumerator EnableAnimator()
+    {
+        PlayerMoveRight.gameObject.GetComponent<Animator>().enabled = false; // disable the animator after move right
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2);
+
+        
+        // if level is 1 enable the animator. animator makes the player tp level 1
+        if (GameManager.instance.level == 1)
+        {
+            // Enable the animator
+            PlayerMoveRight.gameObject.GetComponent<Animator>().enabled = true;
+        }
+        
+    }
+    
 }
