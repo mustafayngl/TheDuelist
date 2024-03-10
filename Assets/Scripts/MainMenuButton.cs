@@ -16,6 +16,7 @@ public class MainMenuButton : MonoBehaviour
     [SerializeField] private GameObject quitButton;
     [SerializeField] private GameObject SoundOnOffButton;
     [SerializeField] private GameObject soundOnOffText;
+    [SerializeField] private GameObject mainMenu;
     [SerializeField] private TextMeshProUGUI soundOnOffTMP;
 
     [SerializeField] private GameObject optionsMenu;
@@ -49,6 +50,11 @@ public class MainMenuButton : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ReturnMainMenuToLoseScreen()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void Sound()

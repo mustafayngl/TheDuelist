@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.SceneManagement;
+
 
 
 
@@ -168,6 +170,7 @@ public class BarSystem : MonoBehaviour
     {
         
         isDuelWon = false;
+        SceneManager.LoadScene(2);
         Debug.Log("You lose!");
         
         // TODO // it should be implemented in GameManager 

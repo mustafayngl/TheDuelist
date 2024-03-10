@@ -11,5 +11,20 @@ public class ToggleGameObject : MonoBehaviour
         // Toggle the active state of the GameObject and all its children
         gameObjectToToggle.SetActive(!gameObjectToToggle.activeSelf);
     }
+    public void ToggleObjectWait()
+    {
+        StartCoroutine(WaitForToggleObject());
+        // Toggle the active state of the GameObject and all its children
+      
+    }
+
+    IEnumerator WaitForToggleObject()
+    {
+        yield return new WaitForSeconds(2f);
+        gameObjectToToggle.SetActive(!gameObjectToToggle.activeSelf);
+        ToggleAnimation.instance.animator1.enabled = true;
+        ToggleAnimation.instance.animator2.enabled = true;
+    }
+
 }
 

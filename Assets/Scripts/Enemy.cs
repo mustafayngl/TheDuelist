@@ -38,9 +38,6 @@ public class Enemy : MonoBehaviour
 
         //GameManager.instance.dieCount++;
 
-
-
-       
         
         
         /*
