@@ -104,9 +104,17 @@ public class GameManager : MonoBehaviour
 
                 // Win the duel
                 dieCount++;
+                
+                //HideButtons.instance.HideButtonsFunction();
 
+                StartCoroutine(HideButtons.instance.HideWaitAndShowButtons());
+                
                 BarSystem.Instance.WinDuel();
-
+                
+                
+                
+                
+                
                 // Increase the enemy draw speed randomly
                 if (GameManager.instance.level == 1)
                 {

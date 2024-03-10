@@ -32,18 +32,23 @@ public class DuelWonAnimationController : MonoBehaviour
     // player win animation based on level. before the playing the animation, enable the animator
     public void PlayWinAnimation()
     {
+        
         if (GameManager.instance.level == 2)
         {
+            
+           
             player.GetComponent<Animator>().enabled = true;
             player.GetComponent<Animator>().SetTrigger("WinLevel2");
         }
         else if (GameManager.instance.level == 3)
         {
+            
             player.GetComponent<Animator>().enabled = true;
             player.GetComponent<Animator>().SetTrigger("WinLevel3");
         }
         else if (GameManager.instance.level == 1 )
         {
+            
             player.GetComponent<Animator>().enabled = true;
             player.GetComponent<Animator>().SetTrigger("Win");
         }

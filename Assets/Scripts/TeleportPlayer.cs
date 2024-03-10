@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class TeleportPlayer : MonoBehaviour
 {
-    
     void Update()
     {
         // duello kazanilirsa calistir
@@ -26,17 +25,18 @@ public class TeleportPlayer : MonoBehaviour
         {
             //Player.instance.PlayerMoveRight.gameObject.GetComponent<Animator>().enabled = true;
             yield return new WaitForSeconds(5);
+            //HideButtons.instance.ShowButtonsFunction();
             gameObject.transform.position = new Vector3(13, gameObject.transform.position.y, gameObject.transform.position.z);
-            
         }
         else if (GameManager.instance.level == 3)
         {
             yield return new WaitForSeconds(5);
+            //HideButtons.instance.ShowButtonsFunction();
             gameObject.transform.position = new Vector3(31, gameObject.transform.position.y, gameObject.transform.position.z);
         }
         else if (GameManager.instance.level == 1)
         {
-            
+            //HideButtons.instance.ShowButtonsFunction();
             //yield return new WaitForSeconds(3);
             gameObject.transform.position = new Vector3(-4.79f, gameObject.transform.position.y, gameObject.transform.position.z);
         }
