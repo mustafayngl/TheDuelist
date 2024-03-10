@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
 
     public Animator BlackoutAnim;
 
+    public AudioSource PlayerAudio;
+
+    public AudioClip GunVoiceClip;
+
 
     // Enemy's
     public GameObject Enemy1;
@@ -96,6 +100,8 @@ public class GameManager : MonoBehaviour
         {
             if (BarSystem.Instance.inRedArea)
             {
+                PlayerAudio.PlayOneShot(GunVoiceClip);
+
                 // Win the duel
                 dieCount++;
 
@@ -104,19 +110,25 @@ public class GameManager : MonoBehaviour
                 // Increase the enemy draw speed randomly
                 if (GameManager.instance.level == 1)
                 {
+                    Enemy1.GetComponent<SpriteRenderer>().enabled = false;
                     GameManager.instance.Enemy2.GetComponent<Enemy>().enemyDrawSpeed =
                         Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 33);
+                    Enemy2.GetComponent<SpriteRenderer>().enabled = true;
                 }
                 else if (GameManager.instance.level == 2)
                 {
+                    Enemy2.GetComponent<SpriteRenderer>().enabled = false;
                     //Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 40);
                     GameManager.instance.Enemy3.GetComponent<Enemy>().enemyDrawSpeed =
                         Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 33);
+                    Enemy3.GetComponent<SpriteRenderer>().enabled = true;
                 }
                 else if (GameManager.instance.level == 3)
                 {
+                    Enemy3.GetComponent<SpriteRenderer>().enabled = false;
                     GameManager.instance.Enemy1.GetComponent<Enemy>().enemyDrawSpeed =
                         Random.Range(GameManager.instance.dieCount * 20, GameManager.instance.dieCount * 33);
+                    Enemy1.GetComponent<SpriteRenderer>().enabled = true;
                 }
 
                 BarSystem.Instance.DuelBar.SetActive(false);

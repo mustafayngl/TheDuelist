@@ -6,9 +6,13 @@ public class ToggleGameObject : MonoBehaviour
 {
     public GameObject gameObjectToToggle; // Reference to the GameObject to toggle
 
+    public AudioSource RouletteAudioSource;
+
+    public AudioClip RouletteAudioClip;
+
     public void ToggleObject()
     {
-        // Toggle the active state of the GameObject and all its children
+
         gameObjectToToggle.SetActive(!gameObjectToToggle.activeSelf);
     }
     public void ToggleObjectWait()
