@@ -37,6 +37,8 @@ public class DuelWonAnimationController : MonoBehaviour
         // Sağa doğru yürümeyi başlatın
         //StartCoroutine(YuruSag());
     }
+
+    
     
     /*
     IEnumerator YuruSag()

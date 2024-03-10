@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI playerDrawSpeedText;
     
     
+    
+    
     public Animator PlayerMoveRight;
     public Animation playermove;
     public AnimationClip playermoveclip;
@@ -54,5 +56,11 @@ public class Player : MonoBehaviour
         //PlayerMoveRight.StopPlayback();
       
         
+    }
+    
+    public void StopAnimation()
+    {
+        PlayerMoveRight.gameObject.GetComponent<Animator>().enabled = false;
+            
     }
 }
