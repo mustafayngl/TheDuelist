@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// it is responsible for teleporting the camera to the next level
+
 public class CameraTeleport : MonoBehaviour
 {
     // Start is called before the first frame update

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// it is responsible for teleporting the player to the next level after winning the duel
+
 public class TeleportPlayer : MonoBehaviour
 {
-
-    
-    
     
     void Update()
     {
