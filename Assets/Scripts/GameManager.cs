@@ -134,6 +134,9 @@ public class GameManager : MonoBehaviour
 
                 DuelWonAnimationController.instance.PlayWinAnimation(); // Play the win animation
                 BlackoutAnim.SetTrigger("WinCondition");
+
+                //StartCoroutine(WaitSome());
+                
                 level++;
                 
                 
@@ -151,6 +154,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    public IEnumerator WaitSome(float waitTime = 5f)
+    {
+        yield return new WaitForSeconds(waitTime);
+    }
     
     /*
     public IEnumerator CheckPressedSpace()
