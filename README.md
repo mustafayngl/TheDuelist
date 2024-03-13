@@ -6,7 +6,7 @@ THE DUELIST
  About the Game
 
  Outlaw's Revenge is an action-adventure 2D game. Players control a hero on a mission of revenge to hunt down all outlaws in America after the murder of the character's family. Gameplay Players engage in a series of duels with outlaws encountered by the character. Success in a duel depends on both the character's and the enemy outlaw's draw speed. After a successful duel, the player advances to the next level. This game is created for TeduJam2024.
- https://itch.io/jam/tedujam2024/rate/2575689
+https://itch.io/jam/tedujam2024/rate/2575689
 
 
 
